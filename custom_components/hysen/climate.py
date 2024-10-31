@@ -84,13 +84,13 @@ CONF_WIFI_SECTYPE = "sectype"
 CONF_WIFI_TIMEOUT = "timeout"
 
 SERVICE_SET_WIFI = "hysen_config_wifi"
-SET_WIFI_SCHEMA = vol.Schema({
+SET_WIFI_SCHEMA = {
     vol.Optional(ATTR_ENTITY_ID,default="all"): cv.comp_entity_ids,
     vol.Required(CONF_WIFI_SSID): cv.string,
     vol.Required(CONF_WIFI_PASSWORD): cv.string,
     vol.Required(CONF_WIFI_SECTYPE): vol.Range(min=0, max=4),
     vol.Optional(CONF_WIFI_TIMEOUT,default=DEFAULT_TIMEOUT): vol.Range(min=0, max=99),
-})
+}
 
 DEFAULT_LOOPMODE = 0                 # 12345,67 = 0   123456,7 = 1  1234567 = 2
                                      # loop_mode refers to index in [ "12345,67", "123456,7", "1234567" ]
@@ -119,7 +119,7 @@ CONFIG_ADVANCED_EXTERNALSENSORTEMPRANGE = "external_sensor_temprange"
 CONFIG_ADVANCED_DEADZONESENSORTEMPRANGE = "deadzone_sensor_temprange"
 
 SERVICE_SET_ADVANCED = "hysen_set_advanced"
-SET_ADVANCED_SCHEMA = vol.Schema({
+SET_ADVANCED_SCHEMA = {
     vol.Required(ATTR_ENTITY_ID): cv.comp_entity_ids,
     vol.Optional(CONFIG_ADVANCED_LOOPMODE,default=DEFAULT_LOOPMODE): vol.Range(min=0, max=2),
     vol.Optional(CONFIG_ADVANCED_SENSORMODE,default=DEFAULT_SENSORMODE): vol.Range(min=0, max=2),
@@ -130,15 +130,15 @@ SET_ADVANCED_SCHEMA = vol.Schema({
     vol.Optional(CONFIG_ADVANCED_POWERONMEM,default=DEFAULT_POWERONMEM): vol.Range(min=0, max=1),
     vol.Optional(CONFIG_ADVANCED_EXTERNALSENSORTEMPRANGE,default=DEFAULT_EXTERNALSENSORTEMPRANGE): vol.Range(min=5, max=99),
     vol.Optional(CONFIG_ADVANCED_DEADZONESENSORTEMPRANGE,default=DEFAULT_DEADZONESENSORTEMPRANGE): vol.Range(min=1, max=99),
-})
+}
 
 CONFIG_REMOTELOCK = "remotelock"
 
 SERVICE_SET_REMOTELOCK = "hysen_set_remotelock"
-SET_REMOTELOCK_SCHEMA = vol.Schema({
+SET_REMOTELOCK_SCHEMA = {
     vol.Required(ATTR_ENTITY_ID): cv.comp_entity_ids,
     vol.Required(CONFIG_REMOTELOCK): vol.Range(min=0, max=1),
-})
+}
 
 CONFIG_WEEK_PERIOD1_START = 'week_period1_start'
 CONFIG_WEEK_PERIOD1_TEMP = 'week_period1_temp'
@@ -158,7 +158,7 @@ CONFIG_WEEKEND_PERIOD2_START = 'weekend_period2_start'
 CONFIG_WEEKEND_PERIOD2_TEMP = 'weekend_period2_temp'
 
 SERVICE_SET_TIME_SCHEDULE = "hysen_set_timeschedule"
-SET_TIME_SCHEDULE_SCHEMA = vol.Schema({
+SET_TIME_SCHEDULE_SCHEMA = {
     vol.Required(ATTR_ENTITY_ID): cv.comp_entity_ids,
     vol.Required(CONFIG_WEEK_PERIOD1_START): cv.time,
     vol.Required(CONFIG_WEEK_PERIOD1_TEMP): vol.Coerce(float),
@@ -176,8 +176,7 @@ SET_TIME_SCHEDULE_SCHEMA = vol.Schema({
     vol.Required(CONFIG_WEEKEND_PERIOD1_TEMP): vol.Coerce(float),
     vol.Required(CONFIG_WEEKEND_PERIOD2_START): cv.time,
     vol.Required(CONFIG_WEEKEND_PERIOD2_TEMP): vol.Coerce(float),
-})
-
+}
 
 HYSEN_POWERON = 1
 HYSEN_POWEROFF = 0
